@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Retail Inventory Optimization Dashboard</title>
+    <style>
+        body { font-family: Arial, sans-serif;color: white; margin: 20px; background-color: #000000;}
+        section { margin-bottom: 40px; }
+        h2 { border-bottom: 1px solid #ccc; padding-bottom: 5px; }
+        pre { background: #000000; padding: 10px; }
+    </style>
+</head>
+<body>
+    <h1>Retail Inventory Optimization Dashboard</h1>
+
+    <section>
+        <h2>Demand Predictor Report</h2>
+        <pre>{{ demand_report|safe }}</pre>
+    </section>
+
+    <section>
+        <h2>Inventory Monitor Report</h2>
+        <pre>{{ inventory_report|safe }}</pre>
+    </section>
+
+    <section>
+        <h2>Pricing Optimizer Report</h2>
+        <pre>{{ pricing_report|safe }}</pre>
+    </section>
+
+    <section>
+        <h2>Store Agent Report</h2>
+        <pre>{{ store_report|safe }}</pre>
+    </section>
+
+    <section>
+        <h2>Warehouse Agent Report</h2>
+        <pre>{{ warehouse_report|safe }}</pre>
+    </section>
+
+    <section>
+        <h2>Supplier Agent Report</h2>
+        <pre>{{ supplier_report|safe }}</pre>
+    </section>
+
+    <section>
+        <h2>Customer Agent Report</h2>
+        <pre>{{ customer_report|safe }}</pre>
+    </section>
+</body>
+</html>
