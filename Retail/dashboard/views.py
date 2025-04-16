@@ -28,13 +28,14 @@ def dashboard_home(request):
     supplier_report = sa.generate_supplier_report({"product_A": 50, "product_B": 30})
     customer_report = ca.generate_customer_report(product)
 
+    # Add fallback messages for reports
     context = {
-        "demand_report": demand_report,
-        "inventory_report": inventory_report,
-        "pricing_report": pricing_report,
-        "store_report": store_report,
-        "warehouse_report": warehouse_report,
-        "supplier_report": supplier_report,
-        "customer_report": customer_report,
+        "demand_report": demand_report or {"forecast": 0, "report": "No data available."},
+        "inventory_report": inventory_report or {"quantity": 0, "report": "No data available."},
+        "pricing_report": pricing_report or {"new_price": 0.0, "report": "No data available."},
+        "store_report": store_report or {"store_data": {"sales": 0, "inventory": {}}, "report": "No data available."},
+        "warehouse_report": warehouse_report or {"warehouse_inventory": {"total_inventory": {}}, "restock_orders": {}, "report": "No data available."},
+        "supplier_report": supplier_report or {"order_details": {}, "confirmation": "No orders processed.", "report": "No data available."},
+        "customer_report": customer_report or {"feedback": "No feedback available.", "sentiment": "neutral", "report": "No data available."},
     }
     return render(request, "dashboard/dashboard_home.html", context)

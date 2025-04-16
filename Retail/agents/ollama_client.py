@@ -1,4 +1,4 @@
-import subprocess
+'''import subprocess
 
 DEFAULT_MODEL = "distilbert"  # Default fallback model
 
@@ -22,6 +22,16 @@ def summarize_text(text: str, model: str = DEFAULT_MODEL) -> str:
             return result.stdout.strip()
         else:
             error_msg = result.stderr.strip()
-            return (f"Ollama error (code {result.returncode}): {error_msg}")
+            return f"Ollama error (code {result.returncode}): {error_msg}"
+    except FileNotFoundError:
+        return "Error: Ollama executable not found. Please ensure it is installed and accessible."
     except Exception as e:
-        return (f"Exception calling Ollama: {e}")
+        return f"Exception calling Ollama: {e}"
+'''
+from ollama import OllamaClient
+
+client = OllamaClient(api_key="your_api_key")
+
+# Example usage
+response = client.some_method()
+print(response)
